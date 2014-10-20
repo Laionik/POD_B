@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,64 +12,78 @@ namespace POD_B
         private static void ZadB()
         {
             Console.WriteLine("|||ZAD B|||");
-            string wejscie = "KWUXIVQM,HIZMH,TWBTDHOM..QVOH.PMHUM,,IOMH.PI.HUIZSM.QVOHPDXMHIVLHX ,PDH,ITM,H.IK.QK,H. ZVHBMJHK ,.WUMZ,HWNNGH,WUMHWZOIVQEI.QWV,H VLMZ,.IVLH.PI.HK ,.WUMZ,HAIT MHOWWLHKWV.MV.HIVLHIZMHXW,.QVOHQVNWZUI.QWVITHIZ.QKTM,H.WH.PMQZH,Q.M,HQVH, XXWZ.HWNH.PQ,GHWJAQW ,TDHIZ.QKTM,HIVLHW.PMZHKWV.MV.H, XXWZ.H.PMH,ITM,HWNH.PMQZHXZWL K.,HI,HBMTTGHJ .HK ,.WUMZ,HBQTTHNQVLH.PMUH.Z TDH ,MN THQNH.PMDHIZMHKWVKQ,MHIVLHQVNWZUI.QAMFHQVHIHNIK. ITHUIVVMZH.PI.H, Q.,H.PMHBMJHVW.H.PMHX ,PDH,.DTMHWNHTI.MHVQOP.H.AHKWUUMZKQIT,GHSMMXH.PMHUIZSM.QVOHTIVO IOMH.WHIHUQVQU UCHTM.H.PMHKWV.MV.H,XMISHNWZHQ.,MTNGWVMHWNH.PMHJM,.HXTIKM,H.WHNQTTHXMWXTMHQVHWVHDW ZHXZWL K.,HWZH,MZAQKM,HQ,HWVHZMTMAIV.HQVNWZUI.QWVITHXIOM,GHIL,HWZHTQVS,H.WHJ DHXZWL K.,H.PI.HIZMHBMTTHQV.MOZI.MLHBQ.PQVH.PMHKWV.MV.HIZMH,MMVHI,HPMTXN THJMKI ,MH.PMDHIZMHIAIQTIJTMHBPMVHXMWXTMHUW,.HVMMLH.PMUGHZMOZM..IJTDFH,WUMH,Q.M,HBMH,. LQMLHLQLHIHOZMI.HRWJHWNHXZWAQLQVOHQVNWZUI.QAMHIZ.QKTM,HJ .HUQ,,MLHWXXWZ. VQ.QM,H.WH,MTTH.PMQZHXZWL K.,HWZHMAMVHTM.HXMWXTMHSVWBH.PMDH,MTTH.PMUG";
-            string wyjscie = "SB CQAYUFPQEUPF.BJ.LPWUGGYAWPGXUP UFFQWUPGXQGP QE,UGYAWPXLCUPQATPCHFXLPFQ.UFPGQSGYSFPGHEAPJURPSHFGB UEFPBVVOPFB UPBEWQAYMQGYBAFPHATUEFGQATPGXQGPSHFGB UEFPIQ.HUPWBBTPSBAGUAGPQATPQEUPCBFGYAWPYAVBE QGYBAQ.PQEGYS.UFPGBPGXUYEPFYGUFPYAPFHCCBEGPBVPGXYFOPBRIYBHF.LPQEGYS.UFPQATPBGXUEPSBAGUAGPFHCCBEGPGXUPFQ.UFPBVPGXUYEPCEBTHSGFPQFPJU..OPRHGPSHFGB UEFPJY..PVYATPGXU PGEH.LPHFUVH.PYVPGXULPQEUPSBASYFUPQATPYAVBE QGYIUNPYAPQPVQSGHQ.P QAAUEPGXQGPFHYGFPGXUPJURPABGPGXUPCHFXLPFGL.UPBVP.QGUPAYWXGPGIPSB  UESYQ.FOP,UUCPGXUP QE,UGYAWP.QAWHQWUPGBPQP YAY H KP.UGPGXUPSBAGUAGPFCUQ,PVBEPYGFU.VOBAUPBVPGXUPRUFGPC.QSUFPGBPVY..PCUBC.UPYAPBAPLBHEPCEBTHSGFPBEPFUEIYSUFPYFPBAPEU.UIQAGPYAVBE QGYBAQ.PCQWUFOPQTFPBEP.YA,FPGBPRHLPCEBTHSGFPGXQGPQEUPJU..PYAGUWEQGUTPJYGXYAPGXUPSBAGUAGPQEUPFUUAPQFPXU.CVH.PRUSQHFUPGXULPQEUPQIQY.QR.UPJXUAPCUBC.UP BFGPAUUTPGXU OPEUWEUGGQR.LNPFB UPFYGUFPJUPFGHTYUTPTYTPQPWEUQGPZBRPBVPCEBIYTYAWPYAVBE QGYIUPQEGYS.UFPRHGP YFFUTPBCCBEGHAYGYUFPGBPFU..PGXUYEPCEBTHSGFPBEPUIUAP.UGPCUBC.UP,ABJPGXULPFU..PGXU O";
+            string wejscie = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\POD\\cw2" + "\\EN62B_98.txt");
+            string wyjscie = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\POD\\cw2" + "\\EN62B_98_WY.txt");
             string[] T = new string[wejscie.Length];
             for (int i = 0; i < wejscie.Length; i++)
             {
                 T[i] = wejscie[i] + " " + wyjscie[i];
             }
-
             string[] Tout = T.Distinct().ToArray();
             Array.Sort(Tout);
-            string alfabet = "";
-            foreach (string x in Tout)
+            Console.WriteLine("Pary liter");
+            foreach (string a in Tout)
             {
-                alfabet += x[2];
-                Console.WriteLine(x);
+                Console.WriteLine(a);
             }
-            Console.WriteLine(alfabet); //Musisz poprzesuwać te elementy
-            //Przesunięcie o 8 jednostek - szyfr Cezara
-            string text = "";
-            int help = 0;
+            string alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ,. ";
+            string tekst = "";
+            Console.WriteLine("\nPo usunięciu duplikatów widzimy przesunięcie o 8 pozycji na alfabecie " + alfabet + "\nRozszyfrowany tekst\n");
             for (int i = 0; i < wejscie.Length; i++)
             {
-
-                help = alfabet.IndexOf(wejscie[i]);
-                if (help < 0)
-                {
-                    Console.WriteLine(help + " " + wejscie[i]);
-                }//text += alfabet[help];
+                tekst += alfabet[(29 + alfabet.IndexOf(wejscie[i]) - 8) % 29];
             }
-                Console.WriteLine("Rozszyfrowany tekst: " + text);
+            Console.WriteLine(tekst);
+            File.WriteAllText((Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\POD\\cw2" + "\\EN62B_98_OK.txt"), tekst);
         }
 
         private static void ZadA()
         {
-
-            //TO NIE JEST CEZAR :(
             Console.WriteLine("|||ZAD A|||");
-            string wejscie = "NDDVWFK#XZNU(WH,BFUN.AUXB,DNC#P,SWFROA(N,GFXQ(ETAPZXAY(KKWUX. FGFVXNK#OH BP.AZP,AZWMH.AOH,BFUN.AUXB,XU .(QTFDS #NUH(.CDB.CEGV(EG.KUXKU,KUFZSXUA.DPXPICZGRFP(FKAPOAFVSDH(PZ#KAOXA.RH,BFUN.AUXB,DNV,SP.KSX.PUXKU,S .(QTFDS #DZEX,WGEXU .,VDPZXP.AZV(IOH.AOK.KFWEP(IOV,SP.KPDZ( WV.DHLVQNDHLVEGP#XQ YH,BFUN.AUXB,DNC#RQ.AWQCOH(KUAO,WGEXU .RQP#(KDPZXP#(HCZ#K#CVGSYKHCAOGKF,KSGGBZDOKDYGOFVSDH,BFUN.AUX BH(KUC.XOP,CUP#DSDZZXOAH(KU .(SXOHXAY(KQVDNH(KUV(XNNUE.C#KPH(KUC.XOP,CUK,OKYSKF#KDP.K .(SXOHXAY(KDNH(KUK#GQKFFQDP.KHYWKEA.KAQH(PZ#KGBICNU,KDNH(.CWAKFP.AZC#(KSDNBYXOHDZEXH(.CUFZSXUA.DPFVRYP,QWQ,H,WSSQWF,GFXCIGOP#(HRSDP .DVUNSD,CNUGBXEGFWAOAV,SP.KSDELSGYNC#KPK.DCGQSDP,KUGOH,BFUN.AUXB,";
-            string wyjscie = "KPI(PLEVA(ST.TBP.UQZ(EZOTGW(XKI R#LYGE#X(RLOMAN.XZHI(#.D SPROTFVOLUHCK SUCH, YXT WXTLD U#. BLUETO#OTU.TOVFM#MUNIVQTE TO TWO OR MORE OTHER ZQTNTO#ONKDCAPABLE DEVIC.#UHIN THIS #.(#E, BLUETO#OTU.PK LIKE ANY OTHER#VFM#MUNIVQTION.YROTOVFL NKAT YXT MAY U#. EVERY DAY LIKE KN#TP, FTPBHSMTPBHOR IMAP. BLUETO#OTU.PK ALSO#LI . THE#..YROTOVFLS IN NKAT IT HAS A CLIERB #.,VER ARA,WIXYPNOWAQKQTP.UQZ(EZO(CWPN OHO(YCG YHI(INT(AT.# THEVFN#(.CTION ZHPK THE MCKS(ZSO S WBN OHO(YCG EHG.PEAC.QPN YR,FMANUC(#.DPNTKN EHA,SV.QUZNKE PURPOSE XM THIS OUAPTER PK TO GIVE YXT AN INTRODUCTION TO ZQTNTO#ONKUHWE WIL#L BRI(NIL.LLO( AWYCQMKBIN IVFMPETING TEOU";
-            string[] T = new string[wyjscie.Length];
+            string wejscie = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\POD\\cw2" + "\\EN62A_89.txt");
+            string wyjscie = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\POD\\cw2" + "\\EN62A_89_WY.txt");
+            string alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ,. (#";
+            int[] Ti = new int[alfabet.Length];
+            for (int i = 0; i < Ti.Length; i++)
+            {
+                Ti[i] = 0;
+            }
+
+            foreach (char a in wejscie)
+            {
+                if (alfabet.IndexOf(a) < alfabet.Length && alfabet.IndexOf(a) >= 0)
+                    Ti[alfabet.IndexOf(a)]++;
+                else
+                {
+                    Console.WriteLine("||" + wejscie.IndexOf(a) + "||" + (int)a);
+                }
+            }
+
+            for (int i = 0; i < Ti.Length; i++)
+            {
+                Console.WriteLine(alfabet[i] + " " + Ti[i]);
+            }
+            Console.WriteLine("Dlugosc alfabetu to: " + alfabet.Length);
+
+            string[] T = new string[wejscie.Length];
             for (int i = 0; i < wyjscie.Length; i++)
             {
                 T[i] = wejscie[i] + " " + wyjscie[i];
             }
-
             string[] Tout = T.Distinct().ToArray();
             Array.Sort(Tout);
-            string alfabet = "";
-            foreach (string x in Tout)
+            Console.WriteLine("Pary liter");
+            foreach (string a in Tout)
             {
-                alfabet += x[2];
-                Console.WriteLine(x);
+                Console.WriteLine(a);
             }
+            Console.WriteLine("Wielkość tablicy T {0}, Wielkość tablicy Tout {1}", T.Length, Tout.Length);
         }
         static void Main(string[] args)
         {
+            ZadA();
             ZadB();
-            //ZadA();
         }
     }
+
 }
